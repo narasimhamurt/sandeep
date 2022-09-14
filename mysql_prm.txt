@@ -1,0 +1,295 @@
+create database db_name;
+create tabl(dataname>.<tablename> (schema );
+tabble header or columns (each column should have column datatypes)
+
+create table cde_batch8.std(s_id int,s_name varchar(20),age int,present char,gender char,contact long,address varchar(20));
+
+
+
+
+
+constrains:
+   
+
+not null(vslue should be present and it won't allow  NULL values)
+
+unique (unique records +only one null )
+
+primary key (not null+ unique )-----std_id,adhar_ cd,pan_card,bank_account_no.,phone_no.,pincode)
+
+foreign key--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| firstproject       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| satish_class       |
+| school             |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> use school;
+Database changed
+mysql> show students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'students' at line 1
+mysql> show table students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'students' at line 1
+mysql> show datatabases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'datatabases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| firstproject       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| satish_class       |
+| school             |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| books            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> create table employee( emp_id int primary key,
+    -> ( emp_name varchar(20) not null,
+    -> emp_salry decimal ( 8,2),
+    -> emp_age not null,
+    -> emp_age_not null check(emp_age>18),
+    -> emp_city varchar(10) default 'hyd',
+    -> doj date not null ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '( emp_name varchar(20) not null,
+emp_salry decimal ( 8,2),
+emp_age not null,
+emp' at line 2
+mysql> create table employee( emp_id int primary key,
+    -> (emp_name varchar(20) not null,
+    -> emp_salary decimal (8,2),
+    -> emp_age_not null check(emp_age>18),
+    -> emp_city varchar(10) default 'hyd',
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(emp_name varchar(20) not null,
+emp_salary decimal (8,2),
+emp_age_not null check' at line 2
+mysql> create table employee( emp_id int primary key,
+    -> emp_name varchar(20) not null,
+    -> emp_salary decimals (8,2),
+    -> emp_age not null,
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decimals (8,2),
+emp_age not null,' at line 3
+mysql> create table employee( emp_id int primary key,
+    -> emp_city varchar(10) default 'hyd',,
+    -> emp_name varchar(20) not null,
+    -> emp_age_not null check(emp_age>18),
+    -> emp_age int not null,
+    -> doj date not null ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+emp_name varchar(20) not null,
+emp_age_not null check(emp_age>18),
+emp_age int' at line 2
+mysql> create table employee( emp_id int primary key,
+    -> emp_salry decimal ( 8,2),
+    -> emp_age int not null,
+    -> emp_age_not null check(emp_age>18),
+    -> emp_city varchar(10) default 'hyd',
+    -> doj date not null ,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'null check(emp_age>18),
+emp_city varchar(10) default 'hyd',
+doj date not null ,
+' at line 4
+mysql> create table employee( emp_id int primary key ,
+    -> emp_name varchar(20) not null,
+    -> emp_salary decimal (8, 2),
+    -> emp_age int not null check (emp_age > 18),
+    -> emp_city varchar(10) default 'HYD',
+    -> doj date not null ,
+    -> emp_dept_number int unique ,
+    -> emp_gender char(6));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc employee;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int          | NO   | PRI | NULL    |       |
+| emp_name        | varchar(20)  | NO   |     | NULL    |       |
+| emp_salary      | decimal(8,2) | YES  |     | NULL    |       |
+| emp_age         | int          | NO   |     | NULL    |       |
+| emp_city        | varchar(10)  | YES  |     | HYD     |       |
+| doj             | date         | NO   |     | NULL    |       |
+| emp_dept_number | int          | YES  | UNI | NULL    |       |
+| emp_gender      | char(6)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into employee values (25432, 'enp_1',20000,19,default, '2022-08-17',11,'male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc employee;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int          | NO   | PRI | NULL    |       |
+| emp_name        | varchar(20)  | NO   |     | NULL    |       |
+| emp_salary      | decimal(8,2) | YES  |     | NULL    |       |
+| emp_age         | int          | NO   |     | NULL    |       |
+| emp_city        | varchar(10)  | YES  |     | HYD     |       |
+| doj             | date         | NO   |     | NULL    |       |
+| emp_dept_number | int          | YES  | UNI | NULL    |       |
+| emp_gender      | char(6)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc employee values;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values' at line 1
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| books            |
+| employee         |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc employee;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int          | NO   | PRI | NULL    |       |
+| emp_name        | varchar(20)  | NO   |     | NULL    |       |
+| emp_salary      | decimal(8,2) | YES  |     | NULL    |       |
+| emp_age         | int          | NO   |     | NULL    |       |
+| emp_city        | varchar(10)  | YES  |     | HYD     |       |
+| doj             | date         | NO   |     | NULL    |       |
+| emp_dept_number | int          | YES  | UNI | NULL    |       |
+| emp_gender      | char(6)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into employee values (25432, 'enp_1',20000,19,default, '2022-08-17',11,'male');
+ERROR 1062 (23000): Duplicate entry '25432' for key 'employee.PRIMARY'
+mysql> insert into employee values (23343,'emp_2',20001,21,default,'2022-08-12',12,'female');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+| emp_id | emp_name | emp_salary | emp_age | emp_city | doj        | emp_dept_number | emp_gender |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+|  23343 | emp_2    |   20001.00 |      21 | HYD      | 2022-08-12 |              12 | female     |
+|  25432 | enp_1    |   20000.00 |      19 | HYD      | 2022-08-17 |              11 | male       |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into employee values (23423,'satish',40000,23,' ','2022-10-21',32,'male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employee;
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+| emp_id | emp_name | emp_salary | emp_age | emp_city | doj        | emp_dept_number | emp_gender |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+|  23343 | emp_2    |   20001.00 |      21 | HYD      | 2022-08-12 |              12 | female     |
+|  23423 | satish   |   40000.00 |      23 |          | 2022-10-21 |              32 | male       |
+|  25432 | enp_1    |   20000.00 |      19 | HYD      | 2022-08-17 |              11 | male       |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into employee values (25342,'sandeep',40000,23,' ','2022-10-21',23,'male');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert intlo employee values(212312,'srinu',22312,29, ' ','2018-10-12',191,'mle');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee values(212312,'srinu',22312,29, ' ','2018-10-12',191,'mle')' at line 1
+mysql> insert into employee values (232121,'srikanth',32,' ','2019-12-23',11,'male');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> select * from employee;
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+| emp_id | emp_name | emp_salary | emp_age | emp_city | doj        | emp_dept_number | emp_gender |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+|  23343 | emp_2    |   20001.00 |      21 | HYD      | 2022-08-12 |              12 | female     |
+|  23423 | satish   |   40000.00 |      23 |          | 2022-10-21 |              32 | male       |
+|  25342 | sandeep  |   40000.00 |      23 |          | 2022-10-21 |              23 | male       |
+|  25432 | enp_1    |   20000.00 |      19 | HYD      | 2022-08-17 |              11 | male       |
++--------+----------+------------+---------+----------+------------+-----------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee add emp_shift char(6);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc table employee;
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table    | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | employee | NULL       | ALL  | NULL          | NULL | NULL    | NULL |    4 |   100.00 | NULL  |
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select * from employee;
++--------+----------+------------+---------+----------+------------+-----------------+------------+-----------+
+| emp_id | emp_name | emp_salary | emp_age | emp_city | doj        | emp_dept_number | emp_gender | emp_shift |
++--------+----------+------------+---------+----------+------------+-----------------+------------+-----------+
+|  23343 | emp_2    |   20001.00 |      21 | HYD      | 2022-08-12 |              12 | female     | NULL      |
+|  23423 | satish   |   40000.00 |      23 |          | 2022-10-21 |              32 | male       | NULL      |
+|  25342 | sandeep  |   40000.00 |      23 |          | 2022-10-21 |              23 | male       | NULL      |
+|  25432 | enp_1    |   20000.00 |      19 | HYD      | 2022-08-17 |              11 | male       | NULL      |
++--------+----------+------------+---------+----------+------------+-----------------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
